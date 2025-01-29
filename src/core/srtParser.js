@@ -42,7 +42,7 @@ async function writeSrt(filePath, subtitles) {
         // 去除编号，例如 "1. " 或 "12. "
         chineseText = chineseText.replace(/^\d+\.\s*/, '');
         chineseText = chineseText ? `\n${chineseText}` : '';
-        return `${sub.index}\n${sub.timecode}\n${sub.text}${chineseText}\n`;
+        return `${sub.index}\n${sub.timecode}\n${sub.text}${chineseText}\n\n`;
       });
     const outputPath = path.join(__dirname, '../../output', path.basename(filePath));
     await fs.writeFile(outputPath, outputLines.join(''), 'utf-8');
